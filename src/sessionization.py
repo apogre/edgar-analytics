@@ -11,7 +11,7 @@ with open('../input/inactivity_period.txt') as f:
 	time_out = f.readlines()
 	time = time_out[0]
 
-with open('../input/log_test.csv') as csvfile:
+with open('../input/log.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
     	ip = row['ip']
@@ -23,12 +23,8 @@ with open('../input/log_test.csv') as csvfile:
         else:
         	if ip not in time_track[time_out_sec]:
 	        	time_track[time_out_sec].append(ip)
-        print dt, time_track.keys()
-        print "================"
         if dt in time_track.keys():
-        	print "here", dt
         	for w in set(time_track[dt]):
-        		print "inactivity", session_dict[w]['date_last']
         		if session_dict[w]['date_last'] == dt-timedelta(seconds=int(time)+1):
 	        		with open('../output/sessionization.txt','a') as f:
 	        			writer = csv.writer(f)
@@ -44,21 +40,12 @@ with open('../input/log_test.csv') as csvfile:
         	session_dict[ip]['duration'] = int((session_dict[ip]['date_last'] - session_dict[ip]['date_1st']).total_seconds())+1
 
 
-for key,vals in session_dict.iteritems():
-	print key, vals
-# pprint(time_track)
-# sys.exit()
 val_updated = []
 for key,vals in time_track.iteritems():
-	print key, vals
 	for val in vals:
-		print val
 		if val not in val_updated:
 			with open('../output/sessionization.txt','a') as f:
 				writer = csv.writer(f)
 				output_data = [val,session_dict[val]['date_1st'].strftime('%Y-%m-%d %H:%M:%S'),session_dict[val]['date_last'].strftime('%Y-%m-%d %H:%M:%S'),session_dict[val]['duration'],session_dict[val]['req_count']]
 				writer.writerow(output_data)
 			val_updated.append(val)
-
-# pprint(session_dict)
-# pprint(time_track)
