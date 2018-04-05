@@ -1,7 +1,5 @@
 import csv
-import sys
 from datetime import datetime, timedelta
-from pprint import pprint
 import collections
 
 
@@ -14,7 +12,7 @@ def inactivity_period():
 
 # Read log file
 def row_generator():
-    with open('../input/log20170630.csv') as csvfile:
+    with open('../input/log.csv') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             yield row
@@ -42,10 +40,7 @@ if __name__ == '__main__':
 
     # yield each row of log file
     iter_row = iter(row_generator())
-    i = 0
     for row in iter_row:
-        i +=1
-        print i
         ip = row.get('ip', '')
         date_time = row.get('date', '')+' '+row.get('time', '')
 
@@ -93,3 +88,4 @@ if __name__ == '__main__':
                 output_data = [val, date_first, date_last, session_dict[val]['duration'], session_dict[val]['req_count']]
                 session_writer(output_data)
                 val_updated.append(val)
+    print "Success"
