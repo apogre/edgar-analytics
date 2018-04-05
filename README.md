@@ -4,15 +4,17 @@ Solution to  Insight Data Science Challenge 2018 - https://github.com/InsightDat
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Prerequisites
 
 ```
-python 2.6
+python 2.7
 ```
 
 ## Running the tests
+
+```git clone https://github.com/apogre/edgar-analytics```
 
 The top-most directory of your repo includes the `input` and `output` directories, and a shell script named `run.sh` that compiles and runs the program that implement the required features.
 
@@ -22,7 +24,7 @@ The tests are stored simply as text files under the `insight_testsuite/tests` fo
 
 You can run the test with the following command from within the `insight_testsuite` folder:
 
-    insight_testsuite~$ ./run_tests.sh 
+    ~$ ./run_tests.sh 
 
 On a failed test, the output of `run_tests.sh` should look like:
 
@@ -50,7 +52,7 @@ On success:
 			iii. remove  ip from both session_dict and session_timeout.
 ```
 
-## Introduction
+## Problem Description
 
 Many investors, researchers, journalists and others use the Securities and Exchange Commission's Electronic Data Gathering, Analysis and Retrieval (EDGAR) system to retrieve financial documents, whether they are doing a deep dive into a particular company's financials or learning new information that a company has revealed through their filings. 
 
@@ -142,7 +144,7 @@ If your program is able to detect multiple user sessions ending at the same time
 
 ## Authors
 
-* **Anish Pradhan** - *Initial work* - [apogre](https://github.com/apogre)
+* **Anish Pradhan** - [apogre](https://github.com/apogre)
 
 ## License
 
